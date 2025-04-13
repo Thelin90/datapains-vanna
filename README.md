@@ -27,7 +27,7 @@ When installing vanna it uses `0.2.1.post1`. Hence giving error:
 
 ## Setup Gemini
 
-Head out to google [AI Studio And Create an API key](https://aistudio.google.com/apikey).
+Head out to google AI Studio And Create an API key: https://aistudio.google.com
 
 Once you have this you need to make sure either globally, or within your session you have:
 
