@@ -1,5 +1,4 @@
 setup-environment: setup-tables install-uv test-sql
-export ARG := ""
 
 .PHONY: run-app
 run-app:
