@@ -1,4 +1,5 @@
 import re
+from time import sleep
 
 from src.operators.vanna_ai import VannaAI
 from src.process import execute
@@ -19,7 +20,7 @@ def get_model_training_data(ddl_string: str) -> tuple[str, str]:
 
     return ddl, documentation
 
-def train_tables(vanna_ai: VannaAI) -> None:
+def train_tables(vanna_ai: VannaAI, sleep_value: int = 70) -> None:
     df_tables = execute(
         sql="SHOW TABLES FROM delta.gold",
         catalog="delta",
@@ -43,9 +44,13 @@ def train_tables(vanna_ai: VannaAI) -> None:
         if documentation:
             logger.info(f"Train On Documentation For delta.gold.{table}")
 
+            # avoid rate limits
+            logger.info(f"We sleep {sleep_value} seconds to avoid Gemini Rate Limits")
+            sleep(sleep_value)
             vanna_ai.train(documentation=documentation)
 
         logger.info(f"Train Example Data For delta.gold.{table}")
+        sleep(sleep_value)
         vanna_ai.train(sql=f"SELECT * FROM delta.gold.{table}")
 
     logger.info(f"Training Done")
