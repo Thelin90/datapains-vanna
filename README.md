@@ -1,4 +1,4 @@
-# Vanna datapains mvp
+# Datapains Vanna AI Demo
 
 This demo is based on the initial trino setup made [here](https://medium.com/@simon.thelin90/trino-minio-metastore-workshop-kubernetes-dbede7b1eca1).
 
@@ -41,19 +41,19 @@ The rest of the demo assumes this.
 ## Data Source -  Table Definitions
 
 ### fact_video_plays
-
-* video_id → dim_videos.video_id
-* user_id → dim_users.user_id
-* category_id → dim_categories.category_id
-* creator_id → dim_creators.creator_id
+Fact table of video playback events. References dimensions: dim_videos (video_id), dim_categories (category_id), dim_creators (creator_id), dim_users (user_id).
 
 ### dim_videos
+Dimension table describing videos
 
-Descriptive details about videos (title, description, duration, upload date, etc.)
+### dim_categories
+Dimension table categorising video content
 
-* dim_categories: Categories (e.g., Education, Entertainment, Sports).
-* dim_creators: Creator details (creator name, channel name, join date).
-* dim_users: User details (user_name, subscription_type, registration_date).
+### dim_creators
+Dimension table containing video creator details
+
+### dim_users
+Dimension table describing user/viewer metadata
 
 ## Context
 
