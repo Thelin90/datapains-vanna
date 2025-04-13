@@ -50,6 +50,7 @@ def train_tables(vanna_ai: VannaAI, sleep_value: int = 70) -> None:
             vanna_ai.train(documentation=documentation)
 
         logger.info(f"Train Example Data For delta.gold.{table}")
+        logger.info(f"We sleep {sleep_value} seconds to avoid Gemini Rate Limits")
         sleep(sleep_value)
         vanna_ai.train(sql=f"SELECT * FROM delta.gold.{table}")
 
