@@ -92,5 +92,4 @@ make run-app
 
 ## Access UI
 
-* (local vanna ai setup)[http://localhost:8084]
-
+* [local vanna ai setup](http://localhost:8084)
