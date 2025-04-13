@@ -1,4 +1,4 @@
-# Vanna datapains mvp
+# Datapains Vanna AI Demo
 
 This demo is based on the initial trino setup made [here](https://medium.com/@simon.thelin90/trino-minio-metastore-workshop-kubernetes-dbede7b1eca1).
 
