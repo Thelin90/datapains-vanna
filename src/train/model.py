@@ -20,7 +20,7 @@ def get_model_training_data(ddl_string: str) -> tuple[str, str]:
 
     return ddl, documentation
 
-def train_tables(vanna_ai: VannaAI, sleep_value: int = 70) -> None:
+def train_tables(vanna_ai: VannaAI, sleep_value: int = 15) -> None:
     df_tables = execute(
         sql="SHOW TABLES FROM delta.gold",
         catalog="delta",
@@ -53,5 +53,46 @@ def train_tables(vanna_ai: VannaAI, sleep_value: int = 70) -> None:
         logger.info(f"We sleep {sleep_value} seconds to avoid Gemini Rate Limits")
         sleep(sleep_value)
         vanna_ai.train(sql=f"SELECT * FROM delta.gold.{table}")
+
+    vanna_ai.train(sql="""
+        SELECT
+            f.play_id,
+            f.play_timestamp,
+            f.watch_duration_seconds,
+            f.ingest_date AS play_ingest_date,
+        
+            -- Video info
+            v.video_id,
+            v.title AS video_title,
+            v.description AS video_description,
+            v.duration_seconds AS video_duration_seconds,
+            v.upload_timestamp AS video_upload_timestamp,
+            v.ingest_date AS video_ingest_date,
+        
+            -- Category info
+            c.category_id,
+            c.category_name,
+            c.ingest_date AS category_ingest_date,
+        
+            -- Creator info
+            cr.creator_id,
+            cr.creator_name,
+            cr.channel_name,
+            cr.join_date AS creator_join_date,
+            cr.ingest_date AS creator_ingest_date,
+        
+            -- User info
+            u.user_id,
+            u.user_name,
+            u.subscription_type,
+            u.registration_date AS user_registration_date,
+            u.ingest_date AS user_ingest_date
+        
+        FROM delta.gold.fact_video_plays f
+        LEFT JOIN delta.gold.dim_videos v ON f.video_id = v.video_id
+        LEFT JOIN delta.gold.dim_categories c ON f.category_id = c.category_id
+        LEFT JOIN delta.gold.dim_creators cr ON f.creator_id = cr.creator_id
+        LEFT JOIN delta.gold.dim_users u ON f.user_id = u.user_id
+    """)
 
     logger.info(f"Training Done")
