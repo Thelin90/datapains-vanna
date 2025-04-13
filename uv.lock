@@ -342,6 +342,37 @@ wheels = [
 ]
 
 [[package]]
+name = "datapains-vanna"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "chromadb" },
+    { name = "google-generativeai" },
+    { name = "kaleido" },
+    { name = "pyhive" },
+    { name = "trino" },
+    { name = "vanna" },
+    { name = "vertexai" },
+]
+
+[package.optional-dependencies]
+dev = [
+    { name = "pytest" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "chromadb", specifier = "==1.0.4" },
+    { name = "google-generativeai", specifier = "==0.8.4" },
+    { name = "kaleido", specifier = "==0.2.1" },
+    { name = "pyhive", specifier = "==0.7.0" },
+    { name = "pytest", marker = "extra == 'dev'", specifier = "==8.3.5" },
+    { name = "trino", specifier = "==0.333.0" },
+    { name = "vanna", specifier = "==0.7.9" },
+    { name = "vertexai", specifier = "==1.71.1" },
+]
+
+[[package]]
 name = "deprecated"
 version = "1.2.18"
 source = { registry = "https://pypi.org/simple" }
@@ -2389,37 +2420,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/86/93/20bca6b0797c5aab788342ba2fdb984bd56eb43bdce96083d35736cdae62/vanna-0.7.9.tar.gz", hash = "sha256:239aae1ae0215830bd28e3ed93f90930c148adb05022531b381c50629ee52920", size = 192594 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/97/3b/bd932e0a469fae76637dc7fc119e03921395ddfd3208c64139779764c5e2/vanna-0.7.9-py3-none-any.whl", hash = "sha256:4a6ac97ef86c1c5a8c4a38e0a26a1a9a0de20ca570ffc5d3e8ebb4bd48d5d9fc", size = 213236 },
-]
-
-[[package]]
-name = "vanna-datapains"
-version = "0.1.0"
-source = { virtual = "." }
-dependencies = [
-    { name = "chromadb" },
-    { name = "google-generativeai" },
-    { name = "kaleido" },
-    { name = "pyhive" },
-    { name = "trino" },
-    { name = "vanna" },
-    { name = "vertexai" },
-]
-
-[package.optional-dependencies]
-dev = [
-    { name = "pytest" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "chromadb", specifier = "==1.0.4" },
-    { name = "google-generativeai", specifier = "==0.8.4" },
-    { name = "kaleido", specifier = "==0.2.1" },
-    { name = "pyhive", specifier = "==0.7.0" },
-    { name = "pytest", marker = "extra == 'dev'", specifier = "==8.3.5" },
-    { name = "trino", specifier = "==0.333.0" },
-    { name = "vanna", specifier = "==0.7.9" },
-    { name = "vertexai", specifier = "==1.71.1" },
 ]
 
 [[package]]

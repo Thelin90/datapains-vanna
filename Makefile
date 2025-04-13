@@ -1,9 +1,9 @@
 setup-environment: setup-tables install-uv test-sql
-export TRAIN := ""
+export ARG := ""
 
 .PHONY: run-app
 run-app:
-	uv run python main $(TRAIN)
+	uv run python main.py $(ARG)
 
 .PHONY: setup-tables
 setup-tables:

@@ -33,6 +33,7 @@ Once you have this you need to make sure either globally, or within your session
 
 ```bash
 export GEMINI_API_KEY=...
+export GEMINI_MODEL=... # example gemini-2.0-flash
 ```
 
 The rest of the demo assumes this.
@@ -81,7 +82,7 @@ make setup-environment
 ### Run with training
 
 ```bash
-make run-app TRAIN=--train
+make run-app ARG=--train
 ```
 
 ### Run without training

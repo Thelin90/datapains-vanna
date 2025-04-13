@@ -2,7 +2,7 @@ from vanna.google import GoogleGeminiChat
 from vanna.chromadb.chromadb_vector import ChromaDB_VectorStore
 from dataclasses import asdict
 
-from models.google_gemini_chat_config import GoogleGeminiChatConfig
+from src.models.google_gemini_chat_config import GoogleGeminiChatConfig
 
 
 class VannaAI(ChromaDB_VectorStore, GoogleGeminiChat):

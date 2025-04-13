@@ -1,7 +1,7 @@
 import re
 
-from operators.vanna_ai import VannaAI
-from process import execute
+from src.operators.vanna_ai import VannaAI
+from src.process import execute
 import logging
 
 logger = logging.getLogger(__name__)

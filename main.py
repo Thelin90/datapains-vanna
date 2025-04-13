@@ -1,9 +1,9 @@
 import argparse
 import logging
 
-from models.google_gemini_chat_config import GoogleGeminiChatConfig
-from operators.vanna_ai import VannaAI
-from train.model import train_tables
+from src.models.google_gemini_chat_config import GoogleGeminiChatConfig
+from src.operators.vanna_ai import VannaAI
+from src.train.model import train_tables
 from vanna.flask import VannaFlaskApp
 from src.process import execute
 
